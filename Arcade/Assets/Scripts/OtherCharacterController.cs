@@ -14,9 +14,13 @@ public class OtherCharacterController : MonoBehaviour
     [SerializeField] private Animator targetAnimatorOther;
 
     private bool canWalk = false;
+    private bool punch = false;
 
+  
     void Update()
     {
+        CheckMove();
+
         float horizontal = Input.GetAxisRaw("Horizontal2");
         float vertical = Input.GetAxisRaw("Vertical2");
 
@@ -38,5 +42,21 @@ public class OtherCharacterController : MonoBehaviour
         }
 
         this.targetAnimatorOther.SetBool("isWalking", this.canWalk);
+        this.targetAnimatorOther.SetBool("Punch", this.punch);
     }
+
+    void CheckMove()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            this.punch = true;
+        }
+        else
+        {
+            this.punch = false;
+        }
+    }
+
+ 
+
 }

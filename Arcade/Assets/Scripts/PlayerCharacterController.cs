@@ -11,9 +11,12 @@ public class PlayerCharacterController : MonoBehaviour
     [SerializeField] private Animator targetAnimator;
 
     private bool walk = false;
+    private bool punch = false;
     
     void Update()
     {
+        CheckMove();
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -35,6 +38,20 @@ public class PlayerCharacterController : MonoBehaviour
         }
 
         this.targetAnimator.SetBool("Walk", this.walk);
+        this.targetAnimator.SetBool("Punch", this.punch);
     }
+
+    void CheckMove()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            this.punch = true;
+        }
+        else
+        {
+            this.punch = false;
+        }
+    }
+ 
 }
 
